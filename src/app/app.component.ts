@@ -7,8 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 1;
+  items = ['Item1', 'Item2', 'Item3', 'Item4'];
 
   countUpOne() {
-    this.title++;
+    this.items.push('Item3222');
   }
 }
