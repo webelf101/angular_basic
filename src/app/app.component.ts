@@ -7,6 +7,5 @@ import {Customer} from './shared/models/customers';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 1;
 
 }
