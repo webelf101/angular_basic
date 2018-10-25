@@ -8,16 +8,5 @@ import {Customer} from './shared/models/customers';
 })
 export class AppComponent {
   title = 1;
-  customers: Customer[] = [
-    {id: 1, firstName: 'John', lastName: 'Johnson', address: 'home'},
-    {id: 2, firstName: 'Bill', lastName: 'Billson', address: 'work'}];
 
-  countUpOne() {
-    this.customers.push({
-      id: 3,
-      firstName: 'new',
-      lastName: 'guy',
-      address: 'somewhere'
-    });
-  }
 }
