@@ -18,6 +18,14 @@ export class CustomersListComponent implements OnInit {
     this.customers = this.customerService.getCustomers();
   }
 
-  countUpOne() {}
+  addCustomer() {
+    // data static for now, later we add forms!! :)
+    this.customerService.addCustomer({
+      id: 3,
+      firstName: 'Ole',
+      lastName: 'Olsen',
+      address: 'theStreet'
+    });
+  }
 
 }

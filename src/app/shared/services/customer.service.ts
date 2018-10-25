@@ -15,11 +15,13 @@ export class CustomerService {
   }
 
   getCustomers(): Customer[] {
+    // TODO Call Rest API later!!!!
     return this.customers;
   }
 
   addCustomer(customer: Customer) {
-    // TODO do it!!!
+    // TODO Call Rest API later!!!!
+    this.customers.push(customer);
   }
 
   // CRUD and more!
