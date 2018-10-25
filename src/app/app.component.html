@@ -4,7 +4,7 @@
     Welcome to {{ title }}!
   </h1>
   <ul>
-    <li *ngFor="let item of items">{{item}}</li>
+    <li *ngFor="let customer of customers">{{customer.firstName}} {{customer.lastName}} </li>
   </ul>
   <button (click)="countUpOne()">Click me</button>
 </div>
