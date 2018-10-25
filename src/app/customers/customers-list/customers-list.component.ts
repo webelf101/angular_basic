@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Customer} from '../../shared/models/customers';
+import {CustomerService} from '../../shared/services/customer.service';
 
 @Component({
   selector: 'app-customers-list',
@@ -10,21 +11,13 @@ export class CustomersListComponent implements OnInit {
 
   customers: Customer[];
 
-  constructor() { }
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
-    this.customers = [
-      {id: 1, firstName: 'John', lastName: 'Johnson', address: 'home'},
-      {id: 2, firstName: 'Bill', lastName: 'Billson', address: 'work'}];
+    // Use the DATA!!!
+    this.customers = this.customerService.getCustomers();
   }
 
-  countUpOne() {
-    this.customers.push({
-      id: 3,
-      firstName: 'new',
-      lastName: 'guy',
-      address: 'somewhere'
-    });
-  }
+  countUpOne() {}
 
 }
