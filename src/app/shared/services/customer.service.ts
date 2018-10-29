@@ -7,11 +7,12 @@ import {Customer} from '../models/customers';
 export class CustomerService {
   // Handle DATA!!!
   customers: Customer[];
+  id = 1;
 
   constructor() {
     this.customers = [
-      {id: 1, firstName: 'John', lastName: 'Johnson', address: 'home'},
-      {id: 2, firstName: 'Bill', lastName: 'Billson', address: 'work'}];
+      {id: this.id++, firstName: 'John', lastName: 'Johnson', address: 'home'},
+      {id: this.id++, firstName: 'Bill', lastName: 'Billson', address: 'work'}];
   }
 
   getCustomers(): Customer[] {
@@ -21,6 +22,7 @@ export class CustomerService {
 
   addCustomer(customer: Customer) {
     // TODO Call Rest API later!!!!
+    customer.id = this.id++;
     this.customers.push(customer);
   }
 

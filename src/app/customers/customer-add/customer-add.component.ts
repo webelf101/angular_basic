@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerService} from '../../shared/services/customer.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-customer-add',
@@ -8,17 +9,19 @@ import {CustomerService} from '../../shared/services/customer.service';
 })
 export class CustomerAddComponent implements OnInit {
 
+  customerForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    address: new FormControl('')
+  });
+
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {}
 
-  addCustomer() {
-    this.customerService.addCustomer({
-      id: 3,
-      firstName: 'Ole',
-      lastName: 'Olsen',
-      address: 'theStreet'
-    });
+  save() {
+    const customer = this.customerForm.value;
+    this.customerService.addCustomer(customer);
   }
 
 }
