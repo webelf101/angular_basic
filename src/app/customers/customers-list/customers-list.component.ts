@@ -17,15 +17,4 @@ export class CustomersListComponent implements OnInit {
     // Use the DATA!!!
     this.customers = this.customerService.getCustomers();
   }
-
-  addCustomer() {
-    // data static for now, later we add forms!! :)
-    this.customerService.addCustomer({
-      id: 3,
-      firstName: 'Ole',
-      lastName: 'Olsen',
-      address: 'theStreet'
-    });
-  }
-
 }
