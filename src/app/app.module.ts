@@ -6,13 +6,15 @@ import { CustomersListComponent } from './customers/customers-list/customers-lis
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CustomerDetailsComponent } from './customers/customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomersListComponent,
     NavbarComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,
