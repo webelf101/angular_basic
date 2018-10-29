@@ -1,4 +1,8 @@
 <ul>
-  <li *ngFor="let customer of customers">{{customer.firstName}} {{customer.lastName}} </li>
+  <li *ngFor="let customer of customers">
+    <a routerLink="/customers/{{customer.id}}">
+      {{customer.firstName}} {{customer.lastName}}</a>
+
+  </li>
 </ul>
 <button (click)="addCustomer()">Add Customer</button>
