@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Customer} from '../../shared/models/customers';
+import {CustomerService} from '../../shared/services/customer.service';
 
 @Component({
   selector: 'app-customer-details',
@@ -9,15 +10,10 @@ import {Customer} from '../../shared/models/customers';
 export class CustomerDetailsComponent implements OnInit {
   customer: Customer;
 
-  constructor() { }
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
-    this.customer = {
-      id: 22,
-      firstName: 'Egon',
-      lastName: 'Olsen',
-      address: 'tord strasse'
-    };
+    this.customer = this.customerService.getCustomerById(1);
   }
 
 }
