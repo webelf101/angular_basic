@@ -2,7 +2,7 @@
   <li *ngFor="let customer of customers">
     <a routerLink="/customers/{{customer.id}}">
       {{customer.firstName}} {{customer.lastName}}</a>
-
+    <button routerLink="/customer-update/{{customer.id}}">Update</button>
   </li>
 </ul>
 <button routerLink="/customer-add">Add Customer</button>
