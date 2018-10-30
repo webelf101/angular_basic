@@ -33,6 +33,10 @@ export class CustomerService {
     this.customers[index] = customer;
   }
 
+  deleteCustomer(id: number) {
+    this.customers = this.customers.filter(cust => cust.id !== id);
+  }
+
   getCustomerById(id: number) {
     // TODO Call Rest API later!!!!
     return this.customers.find(cust => cust.id === id);

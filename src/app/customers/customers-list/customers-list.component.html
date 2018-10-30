@@ -3,6 +3,7 @@
     <a routerLink="/customers/{{customer.id}}">
       {{customer.firstName}} {{customer.lastName}}</a>
     <button routerLink="/customer-update/{{customer.id}}">Update</button>
+    <button (click)="delete(customer.id)">Delete</button>
   </li>
 </ul>
 <button routerLink="/customer-add">Add Customer</button>

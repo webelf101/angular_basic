@@ -17,4 +17,9 @@ export class CustomersListComponent implements OnInit {
     // Use the DATA!!!
     this.customers = this.customerService.getCustomers();
   }
+
+  delete(id: number) {
+    this.customerService.deleteCustomer(id);
+    this.customers = this.customerService.getCustomers();
+  }
 }
