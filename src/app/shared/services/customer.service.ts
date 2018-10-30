@@ -26,7 +26,15 @@ export class CustomerService {
     this.customers.push(customer);
   }
 
+  updateCustomer(customer: Customer) {
+    // TODO Call Rest API later!!!!
+    const custToUpdate = this.customers.find(cust => customer.id === cust.id);
+    const index = this.customers.indexOf(custToUpdate);
+    this.customers[index] = customer;
+  }
+
   getCustomerById(id: number) {
+    // TODO Call Rest API later!!!!
     return this.customers.find(cust => cust.id === id);
   }
   // CRUD and more!
