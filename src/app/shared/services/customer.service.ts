@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Customer} from '../models/customers';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +11,16 @@ export class CustomerService {
   customers: Customer[];
   id = 1;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.customers = [
       {id: this.id++, firstName: 'John', lastName: 'Johnson', address: 'home'},
       {id: this.id++, firstName: 'Bill', lastName: 'Billson', address: 'work'}];
   }
 
-  getCustomers(): Customer[] {
+  getCustomers(): Observable<Customer[]> {
     // TODO Call Rest API later!!!!
-    return this.customers;
+    return this.http.get<Customer[]>
+    ('https://custapp2018.azurewebsites.net/api/customers');
   }
 
   addCustomer(customer: Customer) {

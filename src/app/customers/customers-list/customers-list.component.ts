@@ -15,11 +15,14 @@ export class CustomersListComponent implements OnInit {
 
   ngOnInit() {
     // Use the DATA!!!
-    this.customers = this.customerService.getCustomers();
+    this.customerService.getCustomers()
+      .subscribe(listOfCustomers => {
+        this.customers = listOfCustomers;
+      });
   }
 
   delete(id: number) {
     this.customerService.deleteCustomer(id);
-    this.customers = this.customerService.getCustomers();
+    // this.customers = this.customerService.getCustomers();
   }
 }
