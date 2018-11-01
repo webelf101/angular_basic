@@ -15,6 +15,10 @@ export class CustomersListComponent implements OnInit {
 
   ngOnInit() {
     // Use the DATA!!!
+    this.refresh();
+  }
+
+  refresh() {
     this.customerService.getCustomers()
       .subscribe(listOfCustomers => {
         this.customers = listOfCustomers;
@@ -22,7 +26,10 @@ export class CustomersListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.customerService.deleteCustomer(id);
+    this.customerService.deleteCustomer(id)
+      .subscribe(message => {
+        this.refresh();
+      });
     // this.customers = this.customerService.getCustomers();
   }
 }

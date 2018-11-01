@@ -10,6 +10,7 @@ export class CustomerService {
   // Handle DATA!!!
   customers: Customer[];
   id = 1;
+  apiUrl = 'https://custapp2018.azurewebsites.net/api/customers';
 
   constructor(private http: HttpClient) {
     this.customers = [
@@ -19,8 +20,7 @@ export class CustomerService {
 
   getCustomers(): Observable<Customer[]> {
     // TODO Call Rest API later!!!!
-    return this.http.get<Customer[]>
-    ('https://custapp2018.azurewebsites.net/api/customers');
+    return this.http.get<Customer[]>(this.apiUrl);
   }
 
   addCustomer(customer: Customer) {
@@ -36,8 +36,8 @@ export class CustomerService {
     this.customers[index] = customer;
   }
 
-  deleteCustomer(id: number) {
-    this.customers = this.customers.filter(cust => cust.id !== id);
+  deleteCustomer(id: number): Observable<any> {
+    return this.http.delete(this.apiUrl + '/' + id);
   }
 
   getCustomerById(id: number) {
