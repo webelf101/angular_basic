@@ -1,4 +1,5 @@
-<ul>
+<button routerLink="/customer-add">Add Customer</button>
+<ul *ngIf="customers">
   <li *ngFor="let customer of customers">
     <a routerLink="/customers/{{customer.id}}">
       {{customer.firstName}} {{customer.lastName}}</a>
@@ -6,4 +7,4 @@
     <button (click)="delete(customer.id)">Delete</button>
   </li>
 </ul>
-<button routerLink="/customer-add">Add Customer</button>
+<h4 *ngIf="!customers">Loading.....</h4>
