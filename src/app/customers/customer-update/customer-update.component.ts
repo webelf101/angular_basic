@@ -22,20 +22,23 @@ export class CustomerUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    const customer = this.customerService.getCustomerById(this.id);
-    this.customerForm.patchValue({
-      firstName: customer.firstName,
-      lastName: customer.lastName,
-      address: customer.address
-    });
+    this.customerService.getCustomerById(this.id)
+      .subscribe(customerFromRest => {
+        this.customerForm.patchValue({
+          firstName: customerFromRest.firstName,
+          lastName: customerFromRest.lastName,
+          address: customerFromRest.address
+        });
+      });
   }
 
   save() {
     const customer = this.customerForm.value;
     customer.id = this.id;
-    this.customerService.updateCustomer(customer);
-    /*this.customerForm.reset();
-    this.router.navigateByUrl('/customers');*/
+    this.customerService.updateCustomer(customer)
+      .subscribe(() => {
+        this.router.navigateByUrl('/customers');
+      });
   }
 
 
