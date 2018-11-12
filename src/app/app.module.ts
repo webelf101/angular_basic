@@ -15,7 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatCardModule,
-  MatDividerModule,
+  MatDividerModule, MatInputModule,
   MatListModule,
   MatProgressSpinnerModule
 } from '@angular/material';
@@ -42,7 +42,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatCardModule,
     MatDividerModule,
     MatProgressSpinnerModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
