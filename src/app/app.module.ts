@@ -11,6 +11,15 @@ import { CustomerAddComponent } from './customers/customer-add/customer-add.comp
 import {ReactiveFormsModule} from '@angular/forms';
 import { CustomerUpdateComponent } from './customers/customer-update/customer-update.component';
 import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDividerModule,
+  MatListModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -26,7 +35,14 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatListModule,
+    MatCardModule,
+    MatDividerModule,
+    MatProgressSpinnerModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,15 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
+<div fxFlexFill fxLayout="column">
   <app-navbar></app-navbar>
 
-  <router-outlet></router-outlet>
-
+  <div fxLayout="column" fxFlex>
+    <div fxFlex style="margin: 1%">
+      <router-outlet></router-outlet>
+    </div>
+    <footer fxLayout="column">
+      <div fxLayout="row">
+        <hr fxFlex="100">
+      </div>
+      <p fxFlexAlign="center">Copyright © 2018 Business Academy South West</p>
+    </footer>
+  </div>
 </div>
-
-
