@@ -9,11 +9,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./customer-add.component.css']
 })
 export class CustomerAddComponent implements OnInit {
-
+  types = [{id: 1, name: 'Super'}, {id: 2, name: 'MAHH'}, {id: 3, name: 'Thief'}];
+  friends = [{id: 1, name: 'Ole'}, {id: 2, name: 'Bob'}];
   customerForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    address: new FormControl('')
+    address: new FormControl(''),
+    friend: new FormControl(''),
+    type: new FormControl('')
   });
 
   constructor(private customerService: CustomerService,

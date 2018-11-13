@@ -20,6 +20,19 @@
             <input matInput placeholder="Address" formControlName="address">
           </mat-form-field>
 
+          <mat-form-field>
+            <mat-select id="type" formControlName="type" placeholder="Select Type">
+              <mat-option *ngFor="let t of types" [value]="t.id">
+                {{t.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <select id="friend" formControlName="friend">
+            <option *ngFor="let f of friends"
+                    [ngValue]="f.id">{{ f.name }}</option>
+          </select>
+
           <div fxLayoutAlign="end center">
             <button mat-raised-button color="primary" type="submit">Save</button>
           </div>
