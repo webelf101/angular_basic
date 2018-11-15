@@ -6,7 +6,14 @@
       <i class="fas fa-arrow-left"></i>
     </button>
   </div>
-  <div fxLayout="row" fxLayoutAlign="center top">
+  <h4 [style.visibility]="loading ? 'visible' : 'hidden'"
+      fxFill
+      fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </h4>
+  <div [style.visibility]="loading ? 'hidden' : 'visible'"
+       fxLayout="row"
+       fxLayoutAlign="center top">
     <mat-card fxFlex="33">
       <form [formGroup]="customerForm" (ngSubmit)="save()">
         <div fxLayout="column">
@@ -38,6 +45,4 @@
       </form>
     </mat-card>
   </div>
-
-
 </div>

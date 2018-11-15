@@ -10,11 +10,13 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class CustomerUpdateComponent implements OnInit {
   id: number;
+  loading = true;
   types = [{id: 1, name: 'Super'}, {id: 2, name: 'MAHH'}, {id: 3, name: 'Thief'}];
   customerForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    address: new FormControl('')
+    address: new FormControl(''),
+    type: new FormControl('')
   });
 
   constructor(private route: ActivatedRoute,
@@ -25,6 +27,7 @@ export class CustomerUpdateComponent implements OnInit {
     this.id = +this.route.snapshot.paramMap.get('id');
     this.customerService.getCustomerById(this.id)
       .subscribe(customerFromRest => {
+        this.loading = false;
         this.customerForm.patchValue({
           firstName: customerFromRest.firstName,
           lastName: customerFromRest.lastName,
