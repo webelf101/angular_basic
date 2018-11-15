@@ -1,22 +1,43 @@
-<button routerLink="/customers">Back</button>
-<!-- Add Form here -->
+<div fxLayout="column"
+     fxFill
+     fxLayoutGap="10px">
+  <div fxLayout="row">
+    <button mat-mini-fab color="primary" routerLink="/customers">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center top">
+    <mat-card fxFlex="33">
+      <form [formGroup]="customerForm" (ngSubmit)="save()">
+        <div fxLayout="column">
+          <mat-form-field>
+            <input matInput placeholder="First Name" formControlName="firstName">
+          </mat-form-field>
 
-<form [formGroup]="customerForm" (ngSubmit)="save()">
+          <mat-form-field>
+            <input matInput placeholder="Last Name" formControlName="lastName">
+          </mat-form-field>
 
-  <label>
-    First Name:
-    <input type="text" formControlName="firstName">
-  </label>
+          <mat-form-field>
+            <input matInput placeholder="Address" formControlName="address">
+          </mat-form-field>
 
-  <label>
-    Last Name:
-    <input type="text" formControlName="lastName">
-  </label>
+          <mat-form-field>
+            <mat-select id="type" formControlName="type" placeholder="Select Type">
+              <mat-option *ngFor="let t of types" [value]="t.id">
+                {{t.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-  <label>
-    Address:
-    <input type="text" formControlName="address">
-  </label>
+          <div fxLayoutAlign="end center">
+            <button mat-raised-button color="primary" type="submit">Save</button>
+          </div>
+        </div>
 
-  <button type="submit">Save</button>
-</form>
+      </form>
+    </mat-card>
+  </div>
+
+
+</div>

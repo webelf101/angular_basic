@@ -1,10 +1,43 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <div fxLayout="row" fxLayoutGap="10px">
-      <span routerLink="/">Home</span>
-      <span routerLink="/customers">Customers</span>
-      <span routerLink="/">Orders</span>
-      <span routerLink="/">More...</span>
+<mat-toolbar color="primary" class="fixed-header">
+  <mat-toolbar-row >
+    <div fxLayout="row" fxFlex fxLayoutGap="10px">
+      <button routerLink="/" mat-raised-button color="accent">
+        Home
+      </button>
+      <button mat-raised-button
+              color="accent"
+              [matMenuTriggerFor]="customersMenu">
+        Customers
+      </button>
+      <button routerLink="/orders" mat-raised-button color="accent">
+        Orders
+      </button>
+      <button routerLink="/" mat-raised-button color="accent">
+        More...
+      </button>
+      <span fxFlex></span>
+      <button mat-button color="accent" [matMenuTriggerFor]="loggedInMenu">
+        Welcome Lars Bilde <i class="far fa-smile-beam"></i>
+      </button>
+
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
+
+<mat-menu #customersMenu x-position="before">
+  <a mat-menu-item routerLink="/customers">
+    <i class="fas fa-list-ul mr-1"></i> List All
+  </a>
+  <a mat-menu-item routerLink="/customer-add">
+    <i class="fas fa-plus mr-1"></i> Add
+  </a>
+</mat-menu>
+
+<mat-menu #loggedInMenu x-position="before">
+  <a mat-menu-item href="" (click)="onLogout($event)">
+    <span>Profile</span>
+  </a>
+  <a mat-menu-item href="" routerLink="/about">
+    <span>Logout</span>
+  </a>
+</mat-menu>

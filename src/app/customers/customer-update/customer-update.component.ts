@@ -10,6 +10,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class CustomerUpdateComponent implements OnInit {
   id: number;
+  types = [{id: 1, name: 'Super'}, {id: 2, name: 'MAHH'}, {id: 3, name: 'Thief'}];
   customerForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
