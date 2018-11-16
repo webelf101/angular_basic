@@ -16,7 +16,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatDividerModule, MatInputModule,
-  MatListModule, MatMenuModule,
+  MatListModule, MatMenuModule, MatPaginatorModule,
   MatProgressSpinnerModule, MatSelectModule, MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -46,7 +46,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatInputModule,
     MatToolbarModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

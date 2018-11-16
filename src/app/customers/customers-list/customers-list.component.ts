@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Customer} from '../../shared/models/customers';
 import {CustomerService} from '../../shared/services/customer.service';
+import {PageEvent} from '@angular/material';
 
 @Component({
   selector: 'app-customers-list',
@@ -10,18 +11,29 @@ import {CustomerService} from '../../shared/services/customer.service';
 export class CustomersListComponent implements OnInit {
 
   customers: Customer[];
+  count: number;
+  pageEvent: PageEvent;
+  loading: boolean;
 
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
+    this.pageEvent = {
+      pageIndex: 0,
+      pageSize: 5,
+      length: this.count
+    };
     // Use the DATA!!!
     this.refresh();
   }
 
   refresh() {
-    this.customerService.getCustomers()
+    this.loading = true;
+    this.customerService.getCustomers(this.pageEvent.pageIndex + 1, this.pageEvent.pageSize)
       .subscribe(listOfCustomers => {
-        this.customers = listOfCustomers;
+        this.count = listOfCustomers.count;
+        this.customers = listOfCustomers.list;
+        this.loading = false;
       });
   }
 
@@ -31,5 +43,10 @@ export class CustomersListComponent implements OnInit {
         this.refresh();
       });
     // this.customers = this.customerService.getCustomers();
+  }
+
+  changePage(event: PageEvent) {
+    this.pageEvent = event;
+    this.refresh();
   }
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Customer} from '../models/customers';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {FilteredCustomerList} from '../models/FilteredCustomerList';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,11 @@ export class CustomerService {
 
   constructor(private http: HttpClient) {  }
 
-  getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.apiUrl);
+  getCustomers(currentPage: number, itemsPrPage: number): Observable<FilteredCustomerList> {
+    const params = new HttpParams()
+      .set('currentPage', currentPage.toString())
+      .set('itemsPrPage', itemsPrPage.toString());
+    return this.http.get<FilteredCustomerList>(this.apiUrl, {params: params});
   }
 
   addCustomer(customer: Customer): Observable<Customer> {

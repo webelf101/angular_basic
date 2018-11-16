@@ -7,14 +7,22 @@
       <i class="fas fa-plus"></i>
     </button>
   </div>
-  <h4 *ngIf="!customers"
+  <div fxLayout="row"
+       fxLayoutAlign="center end">
+    <mat-paginator [length]="count"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[5, 10, 25, 100]"
+                   (page)="changePage($event)">
+    </mat-paginator>
+  </div>
+  <h4 *ngIf="loading"
       fxFill
       fxLayoutAlign="center center">
     <mat-spinner></mat-spinner>
   </h4>
   <div fxLayout="row wrap"
        fxLayoutAlign="start start"
-       *ngIf="customers">
+       *ngIf="customers && !loading">
     <div fxFlex="33"
          [fxFlex.md]="'50'"
          [fxFlex.sm]="'100'"
