@@ -25,18 +25,19 @@
               <div>{{customer.firstName}} {{customer.lastName}}</div>
               <p>Address: {{customer.address}}</p>
               <p>Id: {{customer.id}}</p>
+              <p>Type: {{customer.type?.name}}</p>
           </mat-card-content>
           <mat-card-actions fxLayout="row" fxLayoutGap="5px">
             <span fxFlex></span>
             <button routerLink="/customers/{{customer.id}}"
                     mat-mini-fab
-                    color="primary">
+                    color="accent">
               <i class="fas fa-info"></i>
             </button>
             <button routerLink="/customer-update/{{customer.id}}"
                     mat-mini-fab
-                    color="warn">
-              <i class="far fa-edit"></i>
+                    color="primary">
+              <i class="fas fa-pencil-alt"></i>
             </button>
             <button (click)="delete(customer.id)"
                     mat-mini-fab
