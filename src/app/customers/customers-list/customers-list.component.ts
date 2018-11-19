@@ -20,7 +20,7 @@ export class CustomersListComponent implements OnInit {
   ngOnInit() {
     this.pageEvent = {
       pageIndex: 0,
-      pageSize: 5,
+      pageSize: 6,
       length: this.count
     };
     // Use the DATA!!!
