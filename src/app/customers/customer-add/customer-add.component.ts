@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CustomerService} from '../../shared/services/customer.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
+import {Customer} from '../../shared/models/customers';
 
 @Component({
   selector: 'app-customer-add',
@@ -23,8 +24,14 @@ export class CustomerAddComponent implements OnInit {
   ngOnInit() {}
 
   save() {
-    const customer = this.customerForm.value;
-    this.customerService.addCustomer(customer)
+    const customerFromFields = this.customerForm.value;
+    const customer = {
+      firstName: customerFromFields.firstName,
+      lastName: customerFromFields.lastName,
+      address: customerFromFields.address,
+      type: {id: customerFromFields.type}
+    };
+    this.customerService.addCustomer(customer as Customer)
       .subscribe(() => {
         this.router.navigateByUrl('/customers');
       });
