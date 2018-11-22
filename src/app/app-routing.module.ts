@@ -6,13 +6,28 @@ import {CustomersListComponent} from './customers/customers-list/customers-list.
 import {CustomerDetailsComponent} from './customers/customer-details/customer-details.component';
 import {CustomerAddComponent} from './customers/customer-add/customer-add.component';
 import {CustomerUpdateComponent} from './customers/customer-update/customer-update.component';
+import {LoginComponent} from './auth/login/login.component';
 
 const routes: Routes = [
-  { path: 'customers/:id', component: CustomerDetailsComponent },
-  { path: 'customer-update/:id', component: CustomerUpdateComponent },
-  { path: 'customer-add', component: CustomerAddComponent },
-  { path: 'customers', component: CustomersListComponent },
-  { path: '', component: WelcomeComponent }
+  { path: 'customers/:id',
+    component: CustomerDetailsComponent
+  },
+  { path: 'customer-update/:id',
+    component: CustomerUpdateComponent
+  },
+  { path: 'customer-add',
+    component: CustomerAddComponent
+  },
+  { path: 'customers',
+    component: CustomersListComponent
+  },
+  { path: 'login',
+    component: LoginComponent,
+    data: { title: 'Login' }
+  },
+  { path: '',
+    component: WelcomeComponent
+  }
 ];
 
 @NgModule({

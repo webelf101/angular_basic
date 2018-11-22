@@ -10,7 +10,7 @@
   <div fxLayout="row"
        fxLayoutAlign="center end">
     <mat-paginator [length]="count"
-                   [pageSize]="pageSize"
+                   [pageSize]="pageEvent.pageSize"
                    [pageSizeOptions]="[6, 12, 24, 120]"
                    (page)="changePage($event)">
     </mat-paginator>

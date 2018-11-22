@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Customer} from '../../shared/models/customers';
 import {CustomerService} from '../../shared/services/customer.service';
 import {ActivatedRoute} from '@angular/router';
+import {CustomerType} from '../../shared/models/customerType';
 
 @Component({
   selector: 'app-customer-details',

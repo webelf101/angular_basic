@@ -20,10 +20,16 @@ import {
   MatProgressSpinnerModule, MatSelectModule, MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {TokenService} from './shared/services/token.service';
+import {LoginService} from './shared/services/login.service';
+import {AdminGuard} from './auth/guards/admin.guard';
+import {AuthGuard} from './auth/guards/auth.guard';
+import {LoginComponent} from './auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     CustomersListComponent,
     NavbarComponent,
     WelcomeComponent,
@@ -49,7 +55,11 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatMenuModule,
     MatPaginatorModule
   ],
-  providers: [],
+  providers: [
+    TokenService,
+    LoginService,
+    AuthGuard,
+    AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
