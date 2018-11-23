@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Customer} from '../models/customers';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {forkJoin, Observable} from 'rxjs';
-import {FilteredCustomerList} from '../models/FilteredCustomerList';
-import {CustomerAndTypes} from '../models/customerAndTypes';
-import {map, mergeMap, switchMap} from 'rxjs/operators';
-import {CustomerType} from '../models/customerType';
-import {errorHandler} from '@angular/platform-browser/src/browser';
+import {Observable} from 'rxjs';
+import {FilteredCustomerList} from '../models/filteredCustomerList';
 import {environment} from '../../../environments/environment';
 
 @Injectable({
@@ -37,7 +33,7 @@ export class CustomerService {
   }
 
   getCustomerById(id: number): Observable<Customer> {
-    return this.http.get<Customer>(this.apiUrl + '/' + id);
+    return this.http.get<Customer> (this.apiUrl + '/' + id);
   }
 
   /*

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate} from '@angular/router';
 import {TokenService} from '../../shared/services/token.service';
-import {map, take} from 'rxjs/operators';
+import {first, map, take} from 'rxjs/operators';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -11,10 +11,11 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): any {
    return this.auth.isAuthenticated().pipe(
-     take(1),
+     first(),
      map(authenticated => {
+       debugger;
 
-      if (authenticated) {
+       if (authenticated) {
         return true;
       } else {
         // not logged in so redirect to login page with the return url

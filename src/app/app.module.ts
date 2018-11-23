@@ -25,6 +25,7 @@ import {LoginService} from './shared/services/login.service';
 import {AdminGuard} from './auth/guards/admin.guard';
 import {AuthGuard} from './auth/guards/auth.guard';
 import {LoginComponent} from './auth/login/login.component';
+import {NoAccessComponent} from './shared/no-access/no-access.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {LoginComponent} from './auth/login/login.component';
     WelcomeComponent,
     CustomerDetailsComponent,
     CustomerAddComponent,
-    CustomerUpdateComponent
+    CustomerUpdateComponent,
+    NoAccessComponent
   ],
   imports: [
     BrowserModule,

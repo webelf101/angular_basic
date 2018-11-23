@@ -7,16 +7,22 @@ import {CustomerDetailsComponent} from './customers/customer-details/customer-de
 import {CustomerAddComponent} from './customers/customer-add/customer-add.component';
 import {CustomerUpdateComponent} from './customers/customer-update/customer-update.component';
 import {LoginComponent} from './auth/login/login.component';
+import {AdminGuard} from './auth/guards/admin.guard';
+import {AuthGuard} from './auth/guards/auth.guard';
+import {NoAccessComponent} from './shared/no-access/no-access.component';
 
 const routes: Routes = [
   { path: 'customers/:id',
-    component: CustomerDetailsComponent
+    component: CustomerDetailsComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'customer-update/:id',
-    component: CustomerUpdateComponent
+    component: CustomerUpdateComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'customer-add',
-    component: CustomerAddComponent
+    component: CustomerAddComponent,
+    canActivate: [AdminGuard]
   },
   { path: 'customers',
     component: CustomersListComponent
@@ -24,6 +30,10 @@ const routes: Routes = [
   { path: 'login',
     component: LoginComponent,
     data: { title: 'Login' }
+  },
+  { path: 'no-access',
+    component: NoAccessComponent,
+    data: { title: 'No Access' }
   },
   { path: '',
     component: WelcomeComponent
