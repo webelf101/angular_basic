@@ -14,7 +14,6 @@ export class AdminGuard implements CanActivate {
      pipe(
        first(),
        map(user => {
-         debugger;
           if (user && (user.role === 'Administrator' || user.role === 'SuperAdministrator')) {
             return true;
           } else {
