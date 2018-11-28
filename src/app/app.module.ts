@@ -26,6 +26,7 @@ import {AdminGuard} from './auth/guards/admin.guard';
 import {AuthGuard} from './auth/guards/auth.guard';
 import {LoginComponent} from './auth/login/login.component';
 import {NoAccessComponent} from './shared/no-access/no-access.component';
+import {SuperAdminGuard} from './auth/guards/super-admin.guard';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import {NoAccessComponent} from './shared/no-access/no-access.component';
     TokenService,
     LoginService,
     AuthGuard,
-    AdminGuard
+    AdminGuard,
+    SuperAdminGuard
   ],
   bootstrap: [AppComponent]
 })

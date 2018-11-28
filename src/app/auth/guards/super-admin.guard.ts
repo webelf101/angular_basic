@@ -4,7 +4,7 @@ import {TokenService} from '../../shared/services/token.service';
 import {first, map, take} from 'rxjs/operators';
 
 @Injectable()
-export class AdminGuard implements CanActivate {
+export class SuperAdminGuard implements CanActivate {
 
   constructor(private router: Router,
               private auth: TokenService) { }
@@ -14,8 +14,7 @@ export class AdminGuard implements CanActivate {
      pipe(
        first(),
        map(user => {
-         debugger;
-          if (user && (user.role === 'Administrator' || user.role === 'SuperAdministrator')) {
+          if (user && user.role === 'SuperAdministrator') {
             return true;
           } else {
             // not logged in with right role so redirect to login page with the return url

@@ -10,6 +10,7 @@ import {LoginComponent} from './auth/login/login.component';
 import {AdminGuard} from './auth/guards/admin.guard';
 import {AuthGuard} from './auth/guards/auth.guard';
 import {NoAccessComponent} from './shared/no-access/no-access.component';
+import {SuperAdminGuard} from './auth/guards/super-admin.guard';
 
 const routes: Routes = [
   { path: 'customers/:id',
@@ -18,11 +19,11 @@ const routes: Routes = [
   },
   { path: 'customer-update/:id',
     component: CustomerUpdateComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AdminGuard]
   },
   { path: 'customer-add',
     component: CustomerAddComponent,
-    canActivate: [AdminGuard]
+    canActivate: [SuperAdminGuard]
   },
   { path: 'customers',
     component: CustomersListComponent

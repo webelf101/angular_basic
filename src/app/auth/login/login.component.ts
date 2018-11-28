@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from '../../shared/services/login.service';
@@ -10,10 +10,12 @@ import {LoginService} from '../../shared/services/login.service';
 })
 
 export class LoginComponent implements OnInit {
+  @HostBinding('style.height') height: string;
 
   loginGroup: FormGroup;
   constructor(private auth: LoginService,
               private router: Router) {
+    this.height = '100%';
     this.loginGroup = new FormGroup({
       username: new FormControl(),
       password: new FormControl(),
