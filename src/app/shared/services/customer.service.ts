@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {Customer} from '../models/customers';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {forkJoin, Observable} from 'rxjs';
 import {FilteredCustomerList} from '../models/filteredCustomerList';
 import {environment} from '../../../environments/environment';
+import {map, mergeMap, switchMap, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -58,5 +59,4 @@ export class CustomerService {
         })
       );
   }*/
-  // CRUD and more!
 }

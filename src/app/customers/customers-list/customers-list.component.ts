@@ -23,7 +23,6 @@ export class CustomersListComponent implements OnInit {
       pageSize: 6,
       length: this.count
     };
-    // Use the DATA!!!
     this.refresh();
   }
 
@@ -42,7 +41,6 @@ export class CustomersListComponent implements OnInit {
       .subscribe(message => {
         this.refresh();
       });
-    // this.customers = this.customerService.getCustomers();
   }
 
   changePage(event: PageEvent) {

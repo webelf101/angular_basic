@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {User} from '../models/user';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject, Subscription} from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class TokenService {
-  public loggedInSubject = new Subject<string>();
+  public isLoggedIn = new Subject<string>();
 
-  constructor() { }
+  constructor() {}
 
   public getToken(): string {
     return localStorage.getItem('token');
@@ -15,18 +15,18 @@ export class TokenService {
 
   public setToken(token: string) {
     localStorage.setItem('token', token);
-    this.loggedInSubject.next(token);
+    this.isLoggedIn.next(token);
   }
 
   public clearToken() {
     localStorage.removeItem('token');
-    this.loggedInSubject.next(undefined);
+    this.isLoggedIn.next(undefined);
   }
 
   public isAuthenticated(): Observable<boolean> {
-    // get the token
+    // get the token aand notify listeners!
     return Observable.create(obs => {
-        obs.next(this.getToken());
+      obs.next(this.getToken());
     });
   }
 

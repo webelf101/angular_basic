@@ -13,8 +13,6 @@ export class AuthGuard implements CanActivate {
    return this.auth.isAuthenticated().pipe(
      first(),
      map(authenticated => {
-       debugger;
-
        if (authenticated) {
         return true;
       } else {

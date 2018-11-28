@@ -61,7 +61,8 @@ import {NoAccessComponent} from './shared/no-access/no-access.component';
     TokenService,
     LoginService,
     AuthGuard,
-    AdminGuard],
+    AdminGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

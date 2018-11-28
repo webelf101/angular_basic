@@ -18,9 +18,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private tokenService: TokenService) { }
 
   ngOnInit() {
-    this.subscription = this.tokenService.loggedInSubject.subscribe(loggedIn =>
-      this.loggedIn = !!loggedIn
-    );
+    this.subscription = this.tokenService.isLoggedIn
+      .subscribe(loggedIn => {
+        this.loggedIn = !!loggedIn;
+    });
   }
 
   ngOnDestroy(): void {
