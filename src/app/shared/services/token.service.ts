@@ -5,7 +5,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class TokenService {
-  public isLoggedIn = new Subject<string>();
+  // public isLoggedIn = new Subject<string>();
+  public isLoggedIn = new BehaviorSubject<boolean>(!!this.getToken());
 
   constructor() {}
 
@@ -15,7 +16,7 @@ export class TokenService {
 
   public setToken(token: string) {
     localStorage.setItem('token', token);
-    this.isLoggedIn.next(token);
+    this.isLoggedIn.next(!!token);
   }
 
   public clearToken() {

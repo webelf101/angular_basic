@@ -8,11 +8,6 @@ import {TokenService} from './shared/services/token.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  constructor(private tokenService: TokenService) { }
-
-  ngOnInit() {
-    this.tokenService.isAuthenticated().subscribe().unsubscribe();
-  }
 }

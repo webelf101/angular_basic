@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'https://localhost:5001/api'
+  apiEndpoint: 'https://custapp2018.azurewebsites.net/api'
+  // apiEndpoint: 'http://localhost:5000/api'
 };
 
 /*

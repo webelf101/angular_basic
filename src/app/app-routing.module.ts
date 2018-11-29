@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   { path: 'customer-update/:id',
     component: CustomerUpdateComponent,
-    canActivate: [AdminGuard]
+    canActivate: [AdminGuard, SuperAdminGuard]
   },
   { path: 'customer-add',
     component: CustomerAddComponent,
