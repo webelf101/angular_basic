@@ -17,7 +17,7 @@ import {
   MatCardModule,
   MatDividerModule, MatInputModule,
   MatListModule, MatMenuModule, MatPaginatorModule,
-  MatProgressSpinnerModule, MatSelectModule, MatToolbarModule
+  MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TokenService} from './shared/services/token.service';
@@ -27,6 +27,7 @@ import {AuthGuard} from './auth/guards/auth.guard';
 import {LoginComponent} from './auth/login/login.component';
 import {NoAccessComponent} from './shared/no-access/no-access.component';
 import {SuperAdminGuard} from './auth/guards/super-admin.guard';
+import { LoginFailedComponent } from './auth/login/login-failed/login-failed.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {SuperAdminGuard} from './auth/guards/super-admin.guard';
     CustomerDetailsComponent,
     CustomerAddComponent,
     CustomerUpdateComponent,
-    NoAccessComponent
+    NoAccessComponent,
+    LoginFailedComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import {SuperAdminGuard} from './auth/guards/super-admin.guard';
     MatToolbarModule,
     MatSelectModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
   providers: [
     TokenService,
@@ -64,6 +67,9 @@ import {SuperAdminGuard} from './auth/guards/super-admin.guard';
     AuthGuard,
     AdminGuard,
     SuperAdminGuard
+  ],
+  entryComponents: [
+    LoginFailedComponent
   ],
   bootstrap: [AppComponent]
 })
