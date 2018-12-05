@@ -49,7 +49,13 @@ export class WelcomeComponent implements OnInit {
     debugger;
     this.orderService.addOrder(order)
       .subscribe(orderAdded => {
-        this.snackBar.open( 'Order with id ' + orderAdded.id + ' Added ');
+        this.snackBar.open( 'Order with id ' + orderAdded.id + ' Added ', 'Ok', {
+          duration: 2000
+        });
+        this.orderService.getOrders(1, 10)
+          .subscribe(orders => {
+            this.orders = orders.list;
+          });
       },
         err => {
           this.snackBar.open( 'Error ' + err);
@@ -62,6 +68,10 @@ export class WelcomeComponent implements OnInit {
         this.products = products.list;
         this.loading = false;
       });
+      this.refreshOrders();
+  }
+
+  refreshOrders() {
     this.orderService.getOrders(1, 10)
       .subscribe(orders => {
         this.orders = orders.list;

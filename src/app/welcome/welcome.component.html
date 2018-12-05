@@ -36,16 +36,20 @@
          *ngFor="let order of orders">
       <mat-card>
         <mat-card-content>
-          <div>Id: {{order.id}}</div>
+          <h1>Id: {{order.id}}</h1>
           <h2>d-Date: {{order.deliveryDate | date}}</h2>
+          <hr>
           <div *ngIf="order.orderLines && order.orderLines.length >= 2">
             <div *ngFor="let ol of order.orderLines.slice(0,2)">
               <h3> Item: {{ol.product.name}} -
-                price: {{ol.priceWhenBought | currency}} * qty: {{ol.qty}} total: {{(ol.priceWhenBought * ol.qty) | currency}} </h3>
+                price: {{ol.priceWhenBought | currency}} * qty: {{ol.qty}} </h3>
+              <h3> total: {{(ol.priceWhenBought * ol.qty) | currency}} </h3>
+              <hr>
             </div>
           </div>
           <div *ngIf="order.orderLines && order.orderLines.length < 2">
             <h3>No items Found..</h3>
+            <h3>..</h3>
             <h3>..</h3>
           </div>
         </mat-card-content>
