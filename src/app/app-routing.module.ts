@@ -11,6 +11,10 @@ import {AdminGuard} from './auth/guards/admin.guard';
 import {AuthGuard} from './auth/guards/auth.guard';
 import {NoAccessComponent} from './shared/no-access/no-access.component';
 import {SuperAdminGuard} from './auth/guards/super-admin.guard';
+import {OrdersAddComponent} from './orders/orders-add/orders-add.component';
+import {OrdersListComponent} from './orders/orders-list/orders-list.component';
+import {OrdersDetailComponent} from './orders/orders-detail/orders-detail.component';
+import {OrdersUpdateComponent} from './orders/orders-update/orders-update.component';
 
 const routes: Routes = [
   { path: 'customers/:id',
@@ -27,6 +31,18 @@ const routes: Routes = [
   },
   { path: 'customers',
     component: CustomersListComponent
+  },
+  { path: 'orders/:id',
+    component: OrdersDetailComponent
+  },
+  { path: 'orders-update/:id',
+    component: OrdersUpdateComponent
+  },
+  { path: 'orders-add',
+    component: OrdersAddComponent
+  },
+  { path: 'orders',
+    component: OrdersListComponent
   },
   { path: 'login',
     component: LoginComponent,

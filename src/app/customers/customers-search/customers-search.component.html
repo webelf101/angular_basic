@@ -1,0 +1,24 @@
+<form fxFlex [formGroup]="filterForm">
+  <mat-form-field [style.width]="'400px'">
+    <input  matInput
+            placeholder="Search Customer by name"
+            formControlName="searchCustomer">
+  </mat-form-field>
+</form>
+<div fxFlex fxLayout="row wrap">
+  <div fxFlex="33"
+       [fxFlex.md]="'50'"
+       [fxFlex.sm]="'100'"
+       [fxFlex.xs]="'100'"
+       *ngFor="let customer of filteredCustomers">
+    <mat-card (click)="changeCustomer(customer)">
+      <mat-card-content>
+        <div>{{customer.firstName}} {{customer.lastName}}</div>
+        <p>Address: {{customer.address}}</p>
+        <p>Id: {{customer.id}}</p>
+        <p>Type: {{customer.type?.name}}</p>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>

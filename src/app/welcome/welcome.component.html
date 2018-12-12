@@ -2,25 +2,14 @@
      fxLayout="column"
      fxFill
      fxLayoutGap="10px">
-  <div fxLayout="row">
-    <form fxFill [formGroup]="productsForm" (ngSubmit)="save()" *ngIf="products">
-      <div fxLayout="column">
-        <mat-form-field>
-          <mat-select placeholder="Products"
-                      formControlName="productsSelect"
-                      multiple>
-            <mat-option *ngFor="let product of products" [value]="product">{{product.name}}, {{product.price | currency}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <div fxLayoutAlign="end center">
-          <button mat-raised-button color="primary" type="submit">Save</button>
-        </div>
-      </div>
-
-    </form>
+  <div fxLayout="row"
+       fxLayoutAlign="center end">
+    <mat-paginator [length]="count"
+                   [pageSize]="pageEvent.pageSize"
+                   [pageSizeOptions]="[6, 12, 24, 120]"
+                   (page)="changePage($event)">
+    </mat-paginator>
   </div>
-
   <h4 *ngIf="loading"
       fxFill
       fxLayoutAlign="center center">
@@ -28,35 +17,18 @@
   </h4>
   <div fxLayout="row wrap"
        fxLayoutAlign="start start"
-       *ngIf="orders && !loading">
+       *ngIf="products && !loading">
     <div fxFlex="33"
          [fxFlex.md]="'50'"
          [fxFlex.sm]="'100'"
          [fxFlex.xs]="'100'"
-         *ngFor="let order of orders">
+         *ngFor="let product of products">
       <mat-card>
         <mat-card-content>
-          <h1>Id: {{order.id}}</h1>
-          <h2>d-Date: {{order.deliveryDate | date}}</h2>
-          <hr>
-          <div *ngIf="order.orderLines && order.orderLines.length >= 2">
-            <div *ngFor="let ol of order.orderLines.slice(0,2)">
-              <h3> Item: {{ol.product.name}} -
-                price: {{ol.priceWhenBought | currency}} * qty: {{ol.qty}} </h3>
-              <h3> total: {{(ol.priceWhenBought * ol.qty) | currency}} </h3>
-              <hr>
-            </div>
-          </div>
-          <div *ngIf="order.orderLines && order.orderLines.length < 2">
-            <h3>No items Found..</h3>
-            <h3>..</h3>
-            <h3>..</h3>
-          </div>
+          <div>{{product.name}}</div>
+          <p>Price: {{product.price | currency}}</p>
         </mat-card-content>
-
       </mat-card>
     </div>
   </div>
 </div>
-
-

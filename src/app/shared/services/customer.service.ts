@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Customer} from '../models/customers';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {forkJoin, Observable} from 'rxjs';
-import {FilteredCustomerList} from '../models/filteredCustomerList';
+import {Observable} from 'rxjs';
+import {PagedList} from '../models/pagedList';
 import {environment} from '../../../environments/environment';
-import {map, mergeMap, switchMap, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +13,15 @@ export class CustomerService {
 
   constructor(private http: HttpClient) {  }
 
-  getCustomers(currentPage: number, itemsPrPage: number): Observable<FilteredCustomerList> {
+  getAllCustomers(): Observable<PagedList<Customer>> {
+    return this.http.get<PagedList<Customer>>(this.apiUrl);
+  }
+
+  getCustomers(currentPage: number, itemsPrPage: number): Observable<PagedList<Customer>> {
     const params = new HttpParams()
       .set('currentPage', currentPage.toString())
       .set('itemsPrPage', itemsPrPage.toString());
-    return this.http.get<FilteredCustomerList>(this.apiUrl, {params: params});
+    return this.http.get<PagedList<Customer>>(this.apiUrl, {params: params});
   }
 
   addCustomer(customer: Customer): Observable<Customer> {

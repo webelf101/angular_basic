@@ -1,0 +1,86 @@
+<div class="container"
+     fxLayout="column"
+     fxFill
+     fxLayoutGap="10px">
+  <div fxLayout="row">
+
+      <button *ngIf="!selectCustomer && !addOrderLine"
+              mat-mini-fab
+              color="primary"
+              routerLink="/orders"
+              style="margin-right: 5px">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+  </div>
+  <h4 *ngIf="!order"
+      fxFill
+      fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </h4>
+  <div fxLayout="row"
+       fxLayoutAlign="start start"
+       *ngIf="order">
+    <app-customers-search
+      fxFlex
+      fxLayout="column"
+      *ngIf="selectCustomer && !addOrderLine"
+      (custOut)="changeCustomer($event)"></app-customers-search>
+    <app-orders-add-orderline
+      fxFlex
+      fxLayout="column"
+      *ngIf="!selectCustomer && addOrderLine"
+      (olOut)="addOrderLineToOrder($event)"></app-orders-add-orderline>
+    <div fxFlex
+          *ngIf="!selectCustomer && !addOrderLine">
+      <mat-card fxFlex>
+        <mat-card-content>
+          <h3>Id: {{order.id}}</h3>
+          <h4>Customer:
+            <button mat-raised-button
+                    (click)="toggleSelectCustomer()">
+              {{order?.customer?.firstName}} {{order?.customer?.lastName}}
+            </button>
+          </h4>
+          <h4>Deliverydate: {{order.deliveryDate | date}}</h4>
+          <div *ngIf="order.orderLines">
+            <hr style="height:2px; background:blue">
+            <h4>OrderLines:</h4>
+            <mat-toolbar color="primary"
+                         style="margin-top: 10px; border-radius: 5px;"
+                         *ngFor="let ol of order.orderLines">
+              <mat-toolbar-row >
+                <mat-form-field [style.width]="'45px'" [style.marginRight]="'10px'">
+                  <input type="number" matInput [(ngModel)]="ol.qty" (ngModelChange)="changeOl(ol)">
+                </mat-form-field>
+                <p fxFlex="33">{{ol.product.name}}</p>
+                <span fxFlex></span>
+                <p fxLayoutAlign="end center"
+                   style="margin-right: 5px;">{{ol.priceWhenBought * ol.qty | currency}}</p>
+                <button (click)="deleteOL(ol.productId)"
+                        mat-icon-button
+                        color="accent">
+                  <i class="fas fa-trash-alt"></i></button>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          </div>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutGap="5px">
+          <span fxFlex></span>
+          <button (click)="toggleOrderline()" mat-mini-fab color="primary">
+            <i class="fas fa-plus"></i>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <span fxFlex></span>
+    <button
+      (click)="save()"
+      *ngIf="!selectCustomer && !addOrderLine"
+      mat-raised-button
+            color="accent"><i class="far fa-save"></i> Save Changes</button>
+  </div>
+</div>
+
+

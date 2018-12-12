@@ -1,0 +1,25 @@
+<h3 *ngIf="selectedProduct">Selected: {{selectedProduct.id}} - {{selectedProduct.name}}</h3>
+<form fxFlex
+      [formGroup]="amountForm">
+  <mat-form-field>
+    <input type="number" matInput placeholder="Amount" formControlName="count">
+  </mat-form-field>
+</form>
+
+<app-products-search fxFlex
+                     fxLayout="column"
+                     (prodOut)="selectProd($event)" ></app-products-search>
+
+<div fxLayout="row">
+  <span fxFlex></span>
+  <button
+    [style.margin-right]="'5px'"
+   mat-raised-button
+   (click)="cancel()"
+   color="accent"><i class="fas fa-ban"></i> Cancel </button>
+  <button
+    [disabled]="this.amountForm.value.count < 1 || !selectedProduct"
+    mat-raised-button
+    (click)="addOrderLine()"
+    color="accent"><i class="fas fa-plus"></i> Add </button>
+</div>

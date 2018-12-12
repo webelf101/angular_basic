@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import {MatSnackBar, PageEvent} from '@angular/material';
+import {OrderService} from '../../shared/services/order.service';
+import {ProductService} from '../../shared/services/product.service';
 import {Customer} from '../../shared/models/customers';
 import {CustomerService} from '../../shared/services/customer.service';
-import {PageEvent} from '@angular/material';
+import {Order} from '../../shared/models/order';
 
 @Component({
-  selector: 'app-customers-list',
-  templateUrl: './customers-list.component.html',
-  styleUrls: ['./customers-list.component.css']
+  selector: 'app-orders-list',
+  templateUrl: './orders-list.component.html',
+  styleUrls: ['./orders-list.component.scss']
 })
-export class CustomersListComponent implements OnInit {
+export class OrdersListComponent implements OnInit {
 
-  customers: Customer[];
+  orders: Order[];
   count: number;
   pageEvent: PageEvent;
   loading: boolean;
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
     this.pageEvent = {
@@ -28,16 +31,16 @@ export class CustomersListComponent implements OnInit {
 
   refresh() {
     this.loading = true;
-    this.customerService.getCustomers(this.pageEvent.pageIndex + 1, this.pageEvent.pageSize)
+    this.orderService.getOrders(this.pageEvent.pageIndex + 1, this.pageEvent.pageSize)
       .subscribe(pagedList => {
         this.count = pagedList.count;
-        this.customers = pagedList.list;
+        this.orders = pagedList.list;
         this.loading = false;
       });
   }
 
   delete(id: number) {
-    this.customerService.deleteCustomer(id)
+    this.orderService.deleteOrder(id)
       .subscribe(message => {
         this.refresh();
       });
@@ -47,4 +50,5 @@ export class CustomersListComponent implements OnInit {
     this.pageEvent = event;
     this.refresh();
   }
+
 }

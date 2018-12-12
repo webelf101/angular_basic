@@ -8,11 +8,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CustomerDetailsComponent } from './customers/customer-details/customer-details.component';
 import { CustomerAddComponent } from './customers/customer-add/customer-add.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomerUpdateComponent } from './customers/customer-update/customer-update.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
+  MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
   MatDividerModule, MatInputModule,
@@ -28,6 +29,13 @@ import {LoginComponent} from './auth/login/login.component';
 import {NoAccessComponent} from './shared/no-access/no-access.component';
 import {SuperAdminGuard} from './auth/guards/super-admin.guard';
 import { LoginFailedComponent } from './auth/login/login-failed/login-failed.component';
+import { OrdersListComponent } from './orders/orders-list/orders-list.component';
+import { OrdersAddComponent } from './orders/orders-add/orders-add.component';
+import { OrdersDetailComponent } from './orders/orders-detail/orders-detail.component';
+import { OrdersUpdateComponent } from './orders/orders-update/orders-update.component';
+import { CustomersSearchComponent } from './customers/customers-search/customers-search.component';
+import { OrdersAddOrderlineComponent } from './orders/orders-add-orderline/orders-add-orderline.component';
+import { ProductsSearchComponent } from './products/products-search/products-search.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +48,14 @@ import { LoginFailedComponent } from './auth/login/login-failed/login-failed.com
     CustomerAddComponent,
     CustomerUpdateComponent,
     NoAccessComponent,
-    LoginFailedComponent
+    LoginFailedComponent,
+    OrdersListComponent,
+    OrdersAddComponent,
+    OrdersDetailComponent,
+    OrdersUpdateComponent,
+    CustomersSearchComponent,
+    OrdersAddOrderlineComponent,
+    ProductsSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +74,9 @@ import { LoginFailedComponent } from './auth/login/login-failed/login-failed.com
     MatSelectModule,
     MatMenuModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    FormsModule
   ],
   providers: [
     TokenService,

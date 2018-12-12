@@ -1,0 +1,22 @@
+<form fxFlex [formGroup]="filterForm">
+  <mat-form-field [style.width]="'400px'">
+    <input  matInput
+            placeholder="Search Products by name"
+            formControlName="search">
+  </mat-form-field>
+</form>
+<div fxFlex fxLayout="row wrap">
+  <div fxFlex="33"
+       [fxFlex.md]="'50'"
+       [fxFlex.sm]="'100'"
+       [fxFlex.xs]="'100'"
+       *ngFor="let product of filteredProducts">
+    <mat-card (click)="changeProduct(product)">
+      <mat-card-content>
+        <div>{{product.name}}</div>
+        <p>Price: {{product.price}}</p>
+        <p>Id: {{product.id}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-export class CustomerType {
+  export class CustomerType {
   id: number;
   name: string;
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {FilteredCustomerList} from '../models/filteredCustomerList';
+import {PagedList} from '../models/pagedList';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {FilteredProductList} from '../models/filteredProductList';
+import {Product} from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,14 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getCustomers(currentPage: number, itemsPrPage: number): Observable<FilteredProductList> {
+  getProducts(currentPage: number, itemsPrPage: number): Observable<PagedList<Product>> {
     const params = new HttpParams()
       .set('currentPage', currentPage.toString())
       .set('itemsPrPage', itemsPrPage.toString());
-    return this.http.get<FilteredProductList>(this.apiUrl, {params: params});
+    return this.http.get<PagedList<Product>>(this.apiUrl, {params: params});
+  }
+
+  getAllProducts(): Observable<PagedList<Product>> {
+    return this.http.get<PagedList<Product>>(this.apiUrl);
   }
 }
